@@ -1,0 +1,19 @@
+#title-presentation h1 {
+    font-family: 'IBM Plex Mono';
+    line-height: '2em';
+    font-size: 85px;
+    font-weight: 'normal';
+}
+
+#presentation {
+    font-family: 'IBM Plex Mono';
+    font-size: 22px;
+    font-weight: 'normal';
+    line-height: 1.65em;
+    color: #F2F2F2;
+}
+
+#box-image {
+    height: auto;
+    opacity: 0.7;
+}

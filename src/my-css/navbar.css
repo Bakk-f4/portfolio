@@ -1,0 +1,17 @@
+.navbar-brand img {
+    transition: transform 0.3s ease-in-out;
+    /* Aggiungi una transizione per rendere l'effetto più fluido */
+}
+
+.navbar {
+    font-family: 'IBM Plex Mono';
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1);
+    /* Ingrandisci l'immagine del 10% quando il mouse passa sopra */
+}
+
+#logo-container {
+    margin-left: 10%;
+}

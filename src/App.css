@@ -32,7 +32,18 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: matrixFont;
+  src: url(./my-css/fonts/matrixFont.ttf);
+}
+
+@font-face {
+  font-family: IMBPlexMono-Bold;
+  src: local('Poppins'), url(./my-css/fonts/IBMPlexMono-Bold.ttf) format('truetype');
 }

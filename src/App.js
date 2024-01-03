@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+/// STYLE ///
 import './App.css';
 
+/// COMPONENTS ///
+import Navbar from './components/navbar'
+import MatrixRain from './components/MatrixRain'
+import BoxComponent from './components/BoxComponent';
+
+
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MatrixRain />
+      <Navbar />
+      <BoxComponent />
+
+    </>
   );
 }
 
