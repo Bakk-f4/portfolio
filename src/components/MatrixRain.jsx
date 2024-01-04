@@ -13,7 +13,7 @@ const MIN_INTERVAL_DELAY = 300;
 const MAX_INTERVAL_DELAY = 800;
 
 const MIN_DELAY_BETWEEN_STREAMS = 0;
-const MAX_DELAY_BETWEEN_STREAMS = 8000;
+const MAX_DELAY_BETWEEN_STREAMS = 0;
 
 const getRandInRange = (min, max) =>
 	Math.floor(Math.random() * (max - min)) + min;

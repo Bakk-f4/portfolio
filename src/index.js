@@ -8,11 +8,43 @@ import 'bootstrap';
 import 'bootstrap/dist/js/bootstrap.js';
 
 
+import Navbar from './components/navbar'
+
+import { Contacts } from './pages/Contacts';
+import { Projects } from './pages/Project';
+import MatrixRain from './components/MatrixRain'
+import ErrorPage from './pages/ErrorPage';
+
+//https://reactrouter.com/en/6.21.1
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "Contacts/",
+    element: <Contacts />,
+  },
+  {
+    path: "Projects/",
+    element: <Projects />,
+  },
+]);
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <MatrixRain />
+    <Navbar />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

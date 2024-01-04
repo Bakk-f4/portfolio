@@ -13,6 +13,7 @@ const BoxComponent = () => {
         position: 'relative',
         margin: 'auto',
         marginTop: '1.5em',
+        marginBottom: '1.5em',
         backgroundColor: '#212529',
         color: '#F2F2F2',
         padding: '2em',
@@ -42,7 +43,7 @@ const BoxComponent = () => {
                     </div>
                 </Col>
                 <Col id='box-image'>
-                    <Image src={require('./me-black-and-white.jpg')} rounded width={'98%'} />
+                    <Image src={require('../img/me-black-and-white.jpg')} rounded width={'94%'} />
                 </Col>
             </Row>
         </Container >

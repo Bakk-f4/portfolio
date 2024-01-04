@@ -10,7 +10,7 @@ function NavbarComponent() {
     return (
         <Navbar expand="lg" className="bg-dark" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img src={require('../img/bakk-logo.png')} alt="bakk-logo" width="150rem" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,11 +18,11 @@ function NavbarComponent() {
                     <Nav className="me-auto">
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#Home">Home</Nav.Link>
-                        <Nav.Link eventKey={2} href="#Projects">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link eventKey={2} href="Projects">
                             Projects
                         </Nav.Link>
-                        <Nav.Link eventKey={3} href="#Contact">
+                        <Nav.Link eventKey={3} href="Contacts">
                             Contact
                         </Nav.Link>
                     </Nav>
