@@ -1,0 +1,11 @@
+#title-presentation h1 {
+    font-family: 'IBM Plex Mono';
+    line-height: '2em';
+    font-size: 85px;
+    font-weight: 'normal';
+    margin-left: 0.2em;
+}
+
+#github-cards {
+    margin: 0.5em;
+}

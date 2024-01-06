@@ -88,8 +88,8 @@ const RainStream = props => {
 				userSelect: 'none',
 				whiteSpace: 'nowrap',
 				marginTop: topPadding,
-				marginLeft: -1,
-				marginRight: -1,
+				marginLeft: 0,
+				marginRight: 0,
 				textShadow: '0px 0px 8px rgba(32, 194, 14, 0.8)',
 				fontSize: 25,
 			}}>

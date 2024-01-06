@@ -22,37 +22,6 @@ const BoxComponent = () => {
         opacity: '0.8',
         justifyContent: 'center',
     };
-    /*
-    return (
-        <Container style={boxStyle}>
-            <Row>
-                <Col xs={12} md={6}>
-                    <Row xs={1}>
-                        <div id='title-presentation'>
-                            <h1>hi.</h1>
-                            <h1>i’m</h1>
-                            <h1>Ion</h1>
-                        </div>
-                    </Row>
-                    <Row xs={12}>
-                        <div>
-                            <p id='presentation'>
-                                <br></br>
-                                i’m a computer science student at Unige. <br></br>
-                                passionate about the magic behind how things work,<br></br>
-                                currently in the process of graduating, <br></br>
-                                i try to capture every facet <br></br> of the vast computer science landscape.
-                            </p>
-                        </div>
-                    </Row>
-                </Col>
-                <Col id='box-image' xs={12} md={6}>
-                    <Image src={require('../img/me-black-and-white.jpg')} rounded width={'94%'} />
-                </Col>
-            </Row>
-        </Container >
-    );
-    */
 
     return (
         <Container style={boxStyle}>

@@ -11,7 +11,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import Navbar from './components/navbar'
 
 import { Contacts } from './pages/Contacts';
-import { Projects } from './pages/Project';
+import { Projects } from './pages/Projects';
 import MatrixRain from './components/MatrixRain'
 import ErrorPage from './pages/ErrorPage';
 
