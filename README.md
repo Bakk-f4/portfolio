@@ -1,17 +1,40 @@
 # This is my first website in React
 
-If you find anything wrong or need improvement, please feel free to PR.
-I hope this portfolio will be useful to someone as a base from which to start building their own site.
+If you want to load your Repositories from github using the API just put inside [src](/src/) folder 
+your github token in a file named `github_token.json` \
+
+Json file example: \
+```
+{
+    "token": "your_token"
+}
+```
+
+If you find anything wrong or need improvement, please feel free to PR. \
+I hope this portfolio will be useful to someone as a base from which to start building their own site. \
+
+## Credits
+
+Thanks to @C-o-d-e-C-o-w-b-o-y for the cool Matrix [background](https://github.com/C-o-d-e-C-o-w-b-o-y/matrix-rain-background-react) in React. \
+
+# NodeJs for React
+
+In order to use React you need to install [NodeJS](https://nodejs.org/en) \
 
 # Bootstrap React
 
 I used Boostrap as the basis for the 'aesthetics of the site.
-https://react-bootstrap.netlify.app/
+[React-Bootstrap](https://react-bootstrap.netlify.app/) \
+Install boostrap react [here](https://react-bootstrap.netlify.app/docs/getting-started/introduction) \
+
 
 # Mui React
 
 I used Mui for some nice components.
-https://github.com/mui
+Install Mui-Material-UI [here](https://mui.com/material-ui/getting-started/installation/) \
+Install Mui-Joy-UI [here](https://mui.com/joy-ui/getting-started/installation/) \ \
+[Mui](https://mui.com/)
+[Mui-Github](https://github.com/mui)
 
 # Getting Started with Create React App
 ## Available Scripts
