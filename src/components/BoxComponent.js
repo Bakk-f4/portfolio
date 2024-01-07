@@ -38,8 +38,8 @@ const BoxComponent = () => {
                         <div id='presentation'>
                             <p>
                                 <br />
-                                I’m a computer science student at Unige.<br />
-                                Passionate about the magic behind how things work,<br />
+                                I’m a computer science student at Unige.<br /><br />
+                                Passionate about the magic behind how things work.<br /><br />
                                 Currently in the process of graduating,<br />
                                 I try to capture every facet<br />
                                 of the vast computer science landscape.<br />
@@ -48,7 +48,7 @@ const BoxComponent = () => {
                     </Row>
                 </Col>
                 <Col id='box-image'>
-                    <Image src={require('../img/me-black-and-white.jpg')} rounded id='image-id' />
+                    <Image src={require('../img/me-black-and-white.jpg')} rounded id='homepage-image' />
                 </Col>
             </Row>
         </Container>
