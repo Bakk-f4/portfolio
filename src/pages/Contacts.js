@@ -1,13 +1,37 @@
 /// COMPONENTS ///
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
 
 import { useState } from 'react';
+import { Snake } from 'react-snake-lib';
 
 export const Contacts = () => {
 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    //Snake minigame variables
+    const [gameKey, setGameKey] = useState(0);
+    const [score, setScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(0);
+    const [noWall, setNoWall] = useState(false);
+
+    const onScoreChange = (newScore) => {
+        setScore(newScore);
+        if (newScore > maxScore) {
+            setMaxScore(newScore);
+        }
+    };
+
+    const onGameOver = () => {
+        setGameKey(prevKey => prevKey + 1); // Cambia la chiave per forzare il riavvio
+    };
+
+    //on game over reset the score
+    const onGameStart = () => {
+        setScore(0);
+    };
+
 
     const boxStyle = {
         position: 'relative',
@@ -65,12 +89,65 @@ export const Contacts = () => {
                     </Form>
                 </Col>
                 <Col id='box-image'>
-                    <p>
-                        <br />
-                        {
-                            //Qui aggiungere snake minigame dopo che l utente clicka su play al centro del riquadro
-                        }
-                    </p>
+                    <Row >
+                        <Row style={{ width: '85%' }}>
+                            <Col style={{ textAlign: 'left', fontSize: '20px', fontWeight: 'bold' }}>
+                                score: {score}
+                            </Col>
+                            <Col style={{ textAlign: 'right', fontSize: '20px', fontWeight: 'bold' }}>
+                                max: {maxScore}
+                            </Col>
+                        </Row>
+                    </Row>
+
+
+                    <Snake
+                        key={gameKey}
+                        onScoreChange={onScoreChange}
+                        onGameOver={onGameOver}
+                        onGameStart={onGameStart}
+                        width="500px"
+                        height="500px"
+                        bgColor="silver"
+                        innerBorderColor="#b1b0b0"
+                        snakeSpeed={90}
+                        borderColor="black"
+                        snakeColor="#3e3e3e"
+                        snakeHeadColor="#1a1a1a"
+                        appleColor="tomato"
+                        borderRadius={5}
+                        snakeHeadRadius={1}
+                        borderWidth={0}
+                        shakeBoard={true}
+                        boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                        size={16}
+                        startGameText="Start Game"
+                        startButtonStyle={{
+                            color: "white",
+                            padding: "6px 20px",
+                            backgroundColor: "#1a1a1a",
+                            borderRadius: "10px",
+                            fontSize: "17px",
+                            fontWeight: "600",
+                            cursor: "pointer"
+                        }}
+                        startButtonHoverStyle={{
+                            backgroundColor: "#4f4d4d"
+                        }}
+                        noWall={noWall}
+                    />
+                    <Col style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
+                        walls:
+                        <Form.Check
+                            type="switch"
+                            id="noWallSwitch"
+                            checked={noWall}
+                            onChange={() => setNoWall(prevState => !prevState)}
+                            style={{ marginLeft: '10px', marginTop: '10px' }} // Aggiungi un po' di spazio tra il testo e lo switch
+                        />
+                    </Col>
+
+
                 </Col>
             </Row >
         </Container >
