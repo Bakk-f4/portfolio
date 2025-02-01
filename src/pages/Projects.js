@@ -54,7 +54,7 @@ export const Projects = () => {
                     </Row>
                     <Row>
                         <Row xs={1} md={3} className="g-4">
-                            {Array.from({ length: github_request.data.length }).map((_, idx) => (
+                            {Array.from({ length: github_request.data.length - 2 }).map((_, idx) => (
                                 <Col key={idx}>
                                     <RowCardComponent
                                         repoOwner={github_request.data[idx].owner.login}
@@ -72,6 +72,8 @@ export const Projects = () => {
                     <p>
                         <br />
                         //QUI AGGIUNGERE PREVIEW DELLE CARDS CON MOUSEHOVER
+                        https://swiperjs.com/react
+                        https://codesandbox.io/p/devbox/swiper-effect-cards-react-y6dn3i?file=%2Fsrc%2FApp.jsx
                         Here i can put some cards with the coding languages i know
                     </p>
                 </Col>
