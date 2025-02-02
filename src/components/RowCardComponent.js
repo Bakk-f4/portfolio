@@ -6,7 +6,7 @@ import CardContent from '@mui/joy/CardContent';
 import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
 
-export default function InteractiveCard({ repoOwner, repoName, ultimaModifica, codeLang, link_to }) {
+export default function InteractiveCard({ repoOwner, repoName, lastModification, codeLang, link_to }) {
     return (
         <Card
             color="neutral"
@@ -35,7 +35,7 @@ export default function InteractiveCard({ repoOwner, repoName, ultimaModifica, c
                         target="_blank"
                         sx={{ color: 'text.tertiary' }}
                     >
-                        {ultimaModifica}
+                        {lastModification}
                     </Link>
                 </Typography>
                 <Chip

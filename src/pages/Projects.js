@@ -11,6 +11,7 @@ import RowCardComponent from '../components/RowCardComponent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState } from 'react';
 
 // Octokit.js
 // https://github.com/octokit/core.js#readme
@@ -28,7 +29,28 @@ const github_request = await octokit.request('GET /user/repos', {
     }
 })
 
+
+// external dev icons links
+const iconsLinks = {
+    "cplusplus": "https://isocpp.org/",
+    "javascript": "https://www.javascript.com/",
+    "python": "https://www.python.org/",
+    "react": "https://reactjs.org/",
+    "html5": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "css3": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "nodejs": "https://nodejs.org/",
+    "git": "https://git-scm.com/",
+    "github": "https://github.com/",
+    "docker": "https://www.docker.com/",
+    "bootstrap": "https://getbootstrap.com/",
+    "unity": "https://unity.com/",
+};
+
+
+
+
 export const Projects = () => {
+
     const boxStyle = {
         position: 'relative',
         margin: 'auto',
@@ -59,7 +81,7 @@ export const Projects = () => {
                                     <RowCardComponent
                                         repoOwner={github_request.data[idx].owner.login}
                                         repoName={github_request.data[idx].name}
-                                        ultimaModifica={github_request.data[idx].updated_at}
+                                        lastModification={github_request.data[idx].updated_at.slice(0, -10)}
                                         link_to={github_request.data[idx].html_url}
                                         codeLang={github_request.data[idx].language}
                                     />
@@ -68,15 +90,24 @@ export const Projects = () => {
                         </Row>
                     </Row>
                 </Col>
-                <Col id='box-image'>
-                    <p>
-                        <br />
-                        //QUI AGGIUNGERE PREVIEW DELLE CARDS CON MOUSEHOVER
-                        https://swiperjs.com/react
-                        https://codesandbox.io/p/devbox/swiper-effect-cards-react-y6dn3i?file=%2Fsrc%2FApp.jsx
-                        Here i can put some cards with the coding languages i know
-                    </p>
+                <Col className="scrollable-icons-container">
+                    <Row xs={4} md={3} className="gy-5 icons-container">
+                        {Object.keys(iconsLinks).map((icon, idx) => (
+                            <Col key={idx} className="d-flex justify-content-center mb-4 icon-box">
+                                <a href={iconsLinks[icon]} target="_blank" rel="noopener noreferrer" className="icon-link">
+                                    <img
+                                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon}/${icon}-original.svg`}
+                                        alt={icon}
+                                        width="50"
+                                        height="50"
+                                    />
+                                    <span className="tooltip">{icon}</span>
+                                </a>
+                            </Col>
+                        ))}
+                    </Row>
                 </Col>
+
             </Row >
         </Container >
     );

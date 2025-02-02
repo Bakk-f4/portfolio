@@ -1,5 +1,5 @@
 /// COMPONENTS ///
-import { Container, Row, Col, Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 
 import { useState } from 'react';
@@ -7,10 +7,11 @@ import { Snake } from 'react-snake-lib';
 
 export const Contacts = () => {
 
+    // Contact variables
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
-    //Snake minigame variables
+    // Snake minigame variables
     const [gameKey, setGameKey] = useState(0);
     const [score, setScore] = useState(0);
     const [maxScore, setMaxScore] = useState(0);
@@ -24,7 +25,7 @@ export const Contacts = () => {
     };
 
     const onGameOver = () => {
-        setGameKey(prevKey => prevKey + 1); // Cambia la chiave per forzare il riavvio
+        setGameKey(prevKey => prevKey + 1);
     };
 
     //on game over reset the score
@@ -51,7 +52,7 @@ export const Contacts = () => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Message:', message);
-        // Qui inserire logica per invio messaggio
+        // Insert sending mail logic
     };
 
     return (
@@ -68,24 +69,24 @@ export const Contacts = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="email"
-                                placeholder="Inserisci la tua email"
+                                placeholder="insert your email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
                         </Form.Group>
                         <Form.Group controlId="formMessage" className="mt-3">
-                            <Form.Label>Messaggio</Form.Label>
+                            <Form.Label>Message</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={4}
-                                placeholder="Scrivi il tuo messaggio"
+                                placeholder="insert your max score"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 required
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3">Invia</Button>
+                        <Button variant="primary" type="submit" className="mt-3">Send</Button>
                     </Form>
                 </Col>
                 <Col id='box-image'>
@@ -143,11 +144,9 @@ export const Contacts = () => {
                             id="noWallSwitch"
                             checked={noWall}
                             onChange={() => setNoWall(prevState => !prevState)}
-                            style={{ marginLeft: '10px', marginTop: '10px' }} // Aggiungi un po' di spazio tra il testo e lo switch
+                            style={{ marginLeft: '10px', marginTop: '10px' }}
                         />
                     </Col>
-
-
                 </Col>
             </Row >
         </Container >
