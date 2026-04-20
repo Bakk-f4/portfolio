@@ -18,38 +18,26 @@ import ErrorPage from './pages/ErrorPage';
 
 //https://reactrouter.com/en/6.21.1
 import {
-  createBrowserRouter,
-  RouterProvider,
+  HashRouter,
+  Routes,
+  Route,
 } from "react-router-dom";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "Contacts/",
-    element: <Contacts />,
-  },
-  {
-    path: "Projects/",
-    element: <Projects />,
-  },
-  {
-    path: "/career",
-    element: <Career />,
-  },
-]);
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MatrixRain />
-    <Navbar />
-    <RouterProvider router={router} />
+    <HashRouter>
+      <MatrixRain />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<App />} errorElement={<ErrorPage />} />
+        <Route path="/Contacts" element={<Contacts />} />
+        <Route path="/Projects" element={<Projects />} />
+        <Route path="/career" element={<Career />} />
+      </Routes>
+    </HashRouter>
   </React.StrictMode>
 );
 
