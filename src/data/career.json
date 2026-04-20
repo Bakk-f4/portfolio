@@ -1,0 +1,49 @@
+[
+  {
+    "id": "3",
+    "role": "Full Stack .NET Developer",
+    "company": "Acme Solutions Srl",
+    "period": "2023 – present",
+    "location": "Genova, IT",
+    "description": "Lead development of enterprise web applications using ASP.NET Core and React. Designed RESTful APIs consumed by internal tools and third-party integrations. Introduced Docker-based deployment pipeline that cut staging environment setup from 2 hours to 10 minutes.",
+    "tech": ["C#", ".NET 8", "ASP.NET Core", "React", "TypeScript", "SQL Server", "Azure", "Docker", "Entity Framework"],
+    "achievements": [
+      "Reduced API response time by 40% through query optimization and Redis caching",
+      "Led migration of legacy WebForms app to React + .NET 6, cutting bundle size by 55%",
+      "Implemented CI/CD pipeline on Azure DevOps for 3 production services"
+    ],
+    "links": [
+      { "label": "Company", "url": "https://example.com" }
+    ]
+  },
+  {
+    "id": "2",
+    "role": ".NET Developer",
+    "company": "Digital Factory SpA",
+    "period": "2021 – 2023",
+    "location": "Milan, IT",
+    "description": "Developed and maintained B2B SaaS platform features. Built backend services in ASP.NET Core and contributed to the React frontend. Collaborated with a cross-functional team of 6 to ship bi-weekly releases.",
+    "tech": ["C#", ".NET 6", "ASP.NET Core", "React", "SQL Server", "SignalR", "Azure Service Bus"],
+    "achievements": [
+      "Built real-time notification system using SignalR serving 2,000+ concurrent users",
+      "Refactored authentication layer to use JWT + refresh tokens, eliminating session storage issues",
+      "Mentored two junior developers on .NET best practices and code review culture"
+    ],
+    "links": []
+  },
+  {
+    "id": "1",
+    "role": "Junior .NET Developer",
+    "company": "WebAgency Srl",
+    "period": "2019 – 2021",
+    "location": "Genova, IT",
+    "description": "First professional role. Maintained and extended ASP.NET MVC web applications for local business clients. Introduced Git workflows to a team that was using FTP deployments. Graduated from internal code review process within 3 months.",
+    "tech": ["C#", ".NET Framework 4.8", "ASP.NET MVC", "JavaScript", "jQuery", "SQL Server", "Bootstrap"],
+    "achievements": [
+      "Delivered 8 client websites across retail and hospitality verticals",
+      "Introduced Git branching strategy that eliminated deployment conflicts",
+      "Reduced page load times 30% by lazy-loading images and minifying assets"
+    ],
+    "links": []
+  }
+]
