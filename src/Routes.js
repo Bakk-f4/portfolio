@@ -1,17 +1,14 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Projects } from "./pages/Project";
-import { Contacts } from "./pages/Contacts";
+import { BrowserRouter as Router, Routes as RouterRoutes, Route } from 'react-router-dom';
+import { Projects } from './pages/Project';
+import { Contacts } from './pages/Contacts';
+import Career from './pages/Career';
 
-
-export const Routes = () => {
-    return (
-        <Router>
-            <Route path="/">
-                <Projects />
-            </Route>
-            <Route path="Contacts">
-                <Contacts />
-            </Route>
-        </Router>
-    );
-}
+export const Routes = () => (
+  <Router>
+    <RouterRoutes>
+      <Route path="/" element={<Projects />} />
+      <Route path="/Contacts" element={<Contacts />} />
+      <Route path="/career" element={<Career />} />
+    </RouterRoutes>
+  </Router>
+);
