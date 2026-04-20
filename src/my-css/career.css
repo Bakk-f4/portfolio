@@ -33,7 +33,6 @@
 .timeline-list-col {
   flex-shrink: 0;
   padding-right: 1.5em;
-  overflow: hidden;
 }
 
 .timeline-list-col.has-selection {

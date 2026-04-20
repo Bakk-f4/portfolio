@@ -36,9 +36,11 @@ const Timeline = ({ items }) => {
             PaperProps={{ style: { borderRadius: '12px 12px 0 0' } }}
           >
             <div className="drawer-content">
-              {selected && (
-                <CareerDetailPanel item={selected} onClose={() => setSelectedId(null)} />
-              )}
+              <AnimatePresence>
+                {selected && (
+                  <CareerDetailPanel key={selected.id} item={selected} onClose={() => setSelectedId(null)} />
+                )}
+              </AnimatePresence>
             </div>
           </Drawer>
         </>

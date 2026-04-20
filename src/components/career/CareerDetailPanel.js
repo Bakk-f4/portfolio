@@ -18,31 +18,31 @@ const CareerDetailPanel = ({ item, onClose }) => (
     <p className="detail-meta">{item.company} · {item.period} · {item.location}</p>
     <p className="detail-desc">{item.description}</p>
 
-    {item.tech.length > 0 && (
+    {(item.tech ?? []).length > 0 && (
       <>
         <div className="detail-section-label">Tech Stack</div>
         <div className="tech-chips">
-          {item.tech.map(t => (
+          {(item.tech ?? []).map(t => (
             <span key={t} className="tech-chip">{t}</span>
           ))}
         </div>
       </>
     )}
 
-    {item.achievements.length > 0 && (
+    {(item.achievements ?? []).length > 0 && (
       <>
         <div className="detail-section-label">Achievements</div>
         <ul className="achievements-list">
-          {item.achievements.map((a, i) => (
-            <li key={i}>{a}</li>
+          {(item.achievements ?? []).map((a) => (
+            <li key={a}>{a}</li>
           ))}
         </ul>
       </>
     )}
 
-    {item.links.length > 0 && (
+    {(item.links ?? []).length > 0 && (
       <div className="detail-links">
-        {item.links.map(link => (
+        {(item.links ?? []).map(link => (
           <a
             key={link.label}
             href={link.url}
