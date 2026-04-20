@@ -1,6 +1,5 @@
 /// DATA ///
 import { Octokit } from "octokit";
-import git_file from '../github_token.json';
 
 /// STYLE ///
 import '../my-css/fonts/fonts.css';
@@ -11,26 +10,10 @@ import RowCardComponent from '../components/RowCardComponent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-// Octokit.js
-// https://github.com/octokit/core.js#readme
+const octokit = new Octokit();
 
-// Specify the path to the text file
-const insert_token_github = git_file.token.toString();
-
-const octokit = new Octokit({
-    auth: insert_token_github
-})
-
-const github_request = await octokit.request('GET /user/repos', {
-    headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-    }
-})
-
-
-// external dev icons links
 const iconsLinks = {
     "cplusplus": "https://isocpp.org/",
     "javascript": "https://www.javascript.com/",
@@ -46,10 +29,14 @@ const iconsLinks = {
     "unity": "https://unity.com/",
 };
 
-
-
-
 export const Projects = () => {
+    const [repos, setRepos] = useState([]);
+
+    useEffect(() => {
+        octokit.request('GET /users/Bakk-f4/repos', {
+            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
+        }).then(res => setRepos(res.data));
+    }, []);
 
     const boxStyle = {
         position: 'relative',
@@ -69,21 +56,21 @@ export const Projects = () => {
         <Container style={boxStyle}>
             <Row>
                 <Col>
-                    <Row >
+                    <Row>
                         <div id='title-presentation'>
                             <h1>projects</h1>
                         </div>
                     </Row>
                     <Row>
                         <Row xs={1} md={3} className="g-4">
-                            {Array.from({ length: github_request.data.length - 2 }).map((_, idx) => (
+                            {repos.map((repo, idx) => (
                                 <Col key={idx}>
                                     <RowCardComponent
-                                        repoOwner={github_request.data[idx].owner.login}
-                                        repoName={github_request.data[idx].name}
-                                        lastModification={github_request.data[idx].updated_at.slice(0, -10)}
-                                        link_to={github_request.data[idx].html_url}
-                                        codeLang={github_request.data[idx].language}
+                                        repoOwner={repo.owner.login}
+                                        repoName={repo.name}
+                                        lastModification={repo.updated_at.slice(0, -10)}
+                                        link_to={repo.html_url}
+                                        codeLang={repo.language}
                                     />
                                 </Col>
                             ))}
@@ -107,8 +94,7 @@ export const Projects = () => {
                         ))}
                     </Row>
                 </Col>
-
-            </Row >
-        </Container >
+            </Row>
+        </Container>
     );
 }
