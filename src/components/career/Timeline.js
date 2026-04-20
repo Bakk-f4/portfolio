@@ -62,7 +62,7 @@ const Timeline = ({ items }) => {
           </motion.div>
           <AnimatePresence>
             {selected && (
-              <CareerDetailPanel key={selected.id} item={selected} />
+              <CareerDetailPanel item={selected} />
             )}
           </AnimatePresence>
         </div>
