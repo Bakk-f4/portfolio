@@ -22,7 +22,10 @@ function NavbarComponent() {
                         <Nav.Link eventKey={2} href="Projects">
                             Projects
                         </Nav.Link>
-                        <Nav.Link eventKey={3} href="Contacts">
+                        <Nav.Link eventKey={3} href="/career">
+                            Career
+                        </Nav.Link>
+                        <Nav.Link eventKey={4} href="Contacts">
                             Contact
                         </Nav.Link>
                     </Nav>
