@@ -12,6 +12,7 @@ import Navbar from './components/navbar'
 
 import { Contacts } from './pages/Contacts';
 import { Projects } from './pages/Projects';
+import Career from './pages/Career';
 import MatrixRain from './components/MatrixRain'
 import ErrorPage from './pages/ErrorPage';
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "Projects/",
     element: <Projects />,
+  },
+  {
+    path: "/career",
+    element: <Career />,
   },
 ]);
 
