@@ -1,0 +1,241 @@
+.career-page {
+  min-height: 100vh;
+  background: #f8f7f4;
+  padding: 2em 0;
+}
+
+.career-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2em 2.5em;
+}
+
+.career-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2em;
+  letter-spacing: -0.01em;
+}
+
+/* ── Timeline split layout ── */
+
+.timeline-container {
+  min-height: 60vh;
+}
+
+.timeline-split {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.timeline-list-col {
+  flex-shrink: 0;
+  padding-right: 1.5em;
+  overflow: hidden;
+}
+
+.timeline-list-col.has-selection {
+  border-right: 1px solid #e8e4dc;
+}
+
+/* ── Timeline item ── */
+
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.timeline-item:hover,
+.timeline-item.active {
+  background: #eee9e0;
+}
+
+.tl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c8b89a;
+  margin-top: 6px;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.timeline-item.active .tl-dot {
+  background: #8b6f47;
+}
+
+.tl-period {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 3px;
+}
+
+.tl-role {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-company {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ── Detail panel ── */
+
+.career-detail-panel {
+  flex: 1;
+  padding: 0 0 2em 2em;
+  min-width: 0;
+}
+
+.detail-role {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.detail-meta {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 1.5em;
+}
+
+.detail-desc {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+}
+
+.detail-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+.tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.5em;
+}
+
+.tech-chip {
+  background: #e8e4dc;
+  color: #6b5a45;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5em 0;
+}
+
+.achievements-list li {
+  font-size: 13px;
+  color: #555;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid #e8e4dc;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.detail-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.detail-link {
+  font-size: 13px;
+  color: #8b6f47;
+  text-decoration: none;
+  border-bottom: 1px solid #c8b89a;
+  padding-bottom: 1px;
+  transition: color 0.15s ease;
+}
+
+.detail-link:hover {
+  color: #5c4a30;
+}
+
+/* ── Mobile drawer content ── */
+
+.drawer-content {
+  padding: 1.5em 1.5em 2em;
+  max-height: 78vh;
+  overflow-y: auto;
+}
+
+.drawer-close-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5em;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.drawer-close-btn:hover {
+  color: #444;
+}
+
+/* ── Mobile: full-width timeline ── */
+
+@media (max-width: 767px) {
+  .career-container {
+    padding: 1.5em 1em;
+  }
+
+  .career-title {
+    font-size: 2rem;
+    margin-bottom: 1.5em;
+  }
+
+  .timeline-split {
+    flex-direction: column;
+  }
+
+  .timeline-list-col {
+    width: 100% !important;
+    padding-right: 0;
+    border-right: none !important;
+  }
+
+  .timeline-item {
+    padding: 14px 10px;
+  }
+}
