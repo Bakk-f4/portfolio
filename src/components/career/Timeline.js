@@ -60,7 +60,7 @@ const Timeline = ({ items }) => {
               />
             ))}
           </motion.div>
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {selected && (
               <CareerDetailPanel key={selected.id} item={selected} />
             )}

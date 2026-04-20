@@ -90,8 +90,8 @@ export const Contacts = () => {
                     </Form>
                 </Col>
                 <Col id='box-image'>
-                    <Row >
-                        <Row style={{ width: '85%' }}>
+                    <div style={{ width: '100%' }}>
+                        <Row style={{ width: '100%' }}>
                             <Col style={{ textAlign: 'left', fontSize: '20px', fontWeight: 'bold' }}>
                                 score: {score}
                             </Col>
@@ -99,54 +99,52 @@ export const Contacts = () => {
                                 max: {maxScore}
                             </Col>
                         </Row>
-                    </Row>
-
-
-                    <Snake
-                        key={gameKey}
-                        onScoreChange={onScoreChange}
-                        onGameOver={onGameOver}
-                        onGameStart={onGameStart}
-                        width="500px"
-                        height="500px"
-                        bgColor="silver"
-                        innerBorderColor="#b1b0b0"
-                        snakeSpeed={90}
-                        borderColor="black"
-                        snakeColor="#3e3e3e"
-                        snakeHeadColor="#1a1a1a"
-                        appleColor="tomato"
-                        borderRadius={5}
-                        snakeHeadRadius={1}
-                        borderWidth={0}
-                        shakeBoard={true}
-                        boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                        size={16}
-                        startGameText="Start Game"
-                        startButtonStyle={{
-                            color: "white",
-                            padding: "6px 20px",
-                            backgroundColor: "#1a1a1a",
-                            borderRadius: "10px",
-                            fontSize: "17px",
-                            fontWeight: "600",
-                            cursor: "pointer"
-                        }}
-                        startButtonHoverStyle={{
-                            backgroundColor: "#4f4d4d"
-                        }}
-                        noWall={noWall}
-                    />
-                    <Col style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
-                        walls:
-                        <Form.Check
-                            type="switch"
-                            id="noWallSwitch"
-                            checked={noWall}
-                            onChange={() => setNoWall(prevState => !prevState)}
-                            style={{ marginLeft: '10px', marginTop: '10px' }}
+                        <Snake
+                            key={gameKey}
+                            onScoreChange={onScoreChange}
+                            onGameOver={onGameOver}
+                            onGameStart={onGameStart}
+                            width="90%"
+                            bgColor="silver"
+                            innerBorderColor="#b1b0b0"
+                            snakeSpeed={90}
+                            borderColor="black"
+                            snakeColor="#3e3e3e"
+                            snakeHeadColor="#1a1a1a"
+                            appleColor="tomato"
+                            borderRadius={5}
+                            snakeHeadRadius={1}
+                            borderWidth={0}
+                            shakeBoard={true}
+                            boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                            size={16}
+                            startGameText="Start Game"
+                            startButtonStyle={{
+                                color: "white",
+                                padding: "6px 20px",
+                                backgroundColor: "#1a1a1a",
+                                borderRadius: "10px",
+                                fontSize: "17px",
+                                fontWeight: "600",
+                                cursor: "pointer"
+                            }}
+                            startButtonHoverStyle={{
+                                backgroundColor: "#4f4d4d"
+                            }}
+                            noWall={noWall}
                         />
-                    </Col>
+                        <Col style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
+                            walls:
+                            <Form.Check
+                                type="switch"
+                                id="noWallSwitch"
+                                checked={noWall}
+                                onChange={() => setNoWall(prevState => !prevState)}
+                                style={{ marginLeft: '10px', marginTop: '10px' }}
+                            />
+                        </Col>
+
+                    </div>
                 </Col>
             </Row >
         </Container >
