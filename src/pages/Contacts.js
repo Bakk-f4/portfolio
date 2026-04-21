@@ -102,8 +102,8 @@ export const Contacts = () => {
                     <h1>contact me</h1>
                 </div>
             </Row>
-            <Row id='presentation' style={{ flexWrap: 'wrap' }}>
-                <Col xs={12} md={6}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
+                <div style={{ flex: '1 1 280px', minWidth: 0 }}>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
@@ -156,8 +156,8 @@ export const Contacts = () => {
                             </tbody>
                         </table>
                     </div>
-                </Col>
-                <Col id='box-image' xs={12} md={6}>
+                </div>
+                <div id='box-image' style={{ flex: '1 1 280px', minWidth: 0 }}>
                     {!nicknameConfirmed ? (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '2em', gap: '1em' }}>
                             <h5 style={{ color: '#f2f2f2' }}>enter nickname to play</h5>
@@ -180,8 +180,8 @@ export const Contacts = () => {
                         </div>
                     ) : (
                         <div style={{ width: '100%' }}>
-                            <Row style={{ width: '100%', marginBottom: '4px' }}>
-                                <Col style={{ fontSize: '14px', color: '#aaa' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                                <span style={{ fontSize: '14px', color: '#aaa' }}>
                                     playing as <strong style={{ color: '#f2f2f2' }}>{nickname}</strong>
                                     <Button
                                         size="sm"
@@ -189,16 +189,12 @@ export const Contacts = () => {
                                         onClick={() => setNicknameConfirmed(false)}
                                         style={{ color: '#888', fontSize: '12px', padding: '0 6px' }}
                                     >change</Button>
-                                </Col>
-                            </Row>
-                            <Row style={{ width: '100%' }}>
-                                <Col style={{ textAlign: 'left', fontSize: '20px', fontWeight: 'bold' }}>
-                                    score: {score}
-                                </Col>
-                                <Col style={{ textAlign: 'right', fontSize: '20px', fontWeight: 'bold' }}>
-                                    max: {maxScore}
-                                </Col>
-                            </Row>
+                                </span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                                <span style={{ fontSize: '20px', fontWeight: 'bold' }}>score: {score}</span>
+                                <span style={{ fontSize: '20px', fontWeight: 'bold' }}>max: {maxScore}</span>
+                            </div>
                             <Snake
                                 key={gameKey}
                                 onScoreChange={onScoreChange}
@@ -233,7 +229,7 @@ export const Contacts = () => {
                                 }}
                                 noWall={noWall}
                             />
-                            <Col style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
+                            <div style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
                                 walls:
                                 <Form.Check
                                     type="switch"
@@ -242,11 +238,11 @@ export const Contacts = () => {
                                     onChange={() => setNoWall(prevState => !prevState)}
                                     style={{ marginLeft: '10px', marginTop: '10px' }}
                                 />
-                            </Col>
+                            </div>
                         </div>
                     )}
-                </Col>
-            </Row >
-        </Container >
+                </div>
+            </div>
+        </Container>
     );
 }
