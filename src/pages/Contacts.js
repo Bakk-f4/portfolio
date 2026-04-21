@@ -124,31 +124,33 @@ export const Contacts = () => {
                         <Button variant="primary" type="submit" className="mt-3">Send</Button>
                     </Form>
 
-                    {leaderboard.length > 0 && (
-                        <div className="mt-4">
-                            <h5 style={{ color: '#f2f2f2', marginBottom: '0.75em' }}>🏆 leaderboard</h5>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-                                <thead>
-                                    <tr style={{ borderBottom: '1px solid #444', color: '#aaa' }}>
-                                        <th style={{ padding: '4px 8px', textAlign: 'left' }}>#</th>
-                                        <th style={{ padding: '4px 8px', textAlign: 'left' }}>nickname</th>
-                                        <th style={{ padding: '4px 8px', textAlign: 'right' }}>score</th>
-                                        <th style={{ padding: '4px 8px', textAlign: 'right' }}>date</th>
+                    <div className="mt-4">
+                        <h5 style={{ color: '#f2f2f2', marginBottom: '0.75em' }}>🏆 leaderboard</h5>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '1px solid #444', color: '#aaa' }}>
+                                    <th style={{ padding: '4px 8px', textAlign: 'left' }}>#</th>
+                                    <th style={{ padding: '4px 8px', textAlign: 'left' }}>nickname</th>
+                                    <th style={{ padding: '4px 8px', textAlign: 'right' }}>score</th>
+                                    <th style={{ padding: '4px 8px', textAlign: 'right' }}>date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {leaderboard.length === 0 ? (
+                                    <tr>
+                                        <td colSpan={4} style={{ padding: '8px', textAlign: 'center', color: '#555' }}>no scores yet</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {leaderboard.map((entry, idx) => (
-                                        <tr key={idx} style={{ borderBottom: '1px solid #333', color: idx === 0 ? '#4ade80' : '#ccc' }}>
-                                            <td style={{ padding: '4px 8px' }}>{idx + 1}</td>
-                                            <td style={{ padding: '4px 8px' }}>{entry.nickname}</td>
-                                            <td style={{ padding: '4px 8px', textAlign: 'right', fontWeight: 'bold' }}>{entry.score}</td>
-                                            <td style={{ padding: '4px 8px', textAlign: 'right', color: '#888' }}>{entry.date}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
+                                ) : leaderboard.map((entry, idx) => (
+                                    <tr key={idx} style={{ borderBottom: '1px solid #333', color: idx === 0 ? '#4ade80' : '#ccc' }}>
+                                        <td style={{ padding: '4px 8px' }}>{idx + 1}</td>
+                                        <td style={{ padding: '4px 8px' }}>{entry.nickname}</td>
+                                        <td style={{ padding: '4px 8px', textAlign: 'right', fontWeight: 'bold' }}>{entry.score}</td>
+                                        <td style={{ padding: '4px 8px', textAlign: 'right', color: '#888' }}>{entry.date}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </Col>
                 <Col id='box-image'>
                     {!nicknameConfirmed ? (
