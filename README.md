@@ -1,4 +1,4 @@
-# Ion Menghini — Portfolio
+# Portfolio
 
 > Personal portfolio built with React. Live at **[bakk-f4.github.io/portfolio](https://bakk-f4.github.io/portfolio)**
 

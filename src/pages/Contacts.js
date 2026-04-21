@@ -11,7 +11,7 @@ const fetchLeaderboard = async () => {
     const snapshot = await get(q);
     if (!snapshot.exists()) return [];
     const entries = [];
-    snapshot.forEach(child => entries.push(child.val()));
+    snapshot.forEach(child => { entries.push(child.val()); });
     return entries.sort((a, b) => b.score - a.score);
 };
 
