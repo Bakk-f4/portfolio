@@ -102,8 +102,8 @@ export const Contacts = () => {
                     <h1>contact me</h1>
                 </div>
             </Row>
-            <Row id='presentation'>
-                <Col xs={12} md>
+            <Row id='presentation' style={{ flexWrap: 'wrap' }}>
+                <Col xs={12} md={6} style={{ position: 'relative', zIndex: 1 }}>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
@@ -157,7 +157,7 @@ export const Contacts = () => {
                         </table>
                     </div>
                 </Col>
-                <Col id='box-image' xs={12} md>
+                <Col id='box-image' xs={12} md={6} style={{ position: 'relative', zIndex: 1 }}>
                     {!nicknameConfirmed ? (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '1em' }}>
                             <h5 style={{ color: '#f2f2f2' }}>enter nickname to play</h5>
