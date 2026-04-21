@@ -1,27 +1,24 @@
 /// COMPONENTS ///
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Snake } from 'react-snake-lib';
+import { db } from '../firebase';
+import { collection, addDoc, query, orderBy, limit, getDocs } from 'firebase/firestore';
 
-const LEADERBOARD_KEY = 'snakeLeaderboard';
-
-const loadLeaderboard = () => {
-    try {
-        return JSON.parse(localStorage.getItem(LEADERBOARD_KEY) || '[]');
-    } catch {
-        return [];
-    }
+const fetchLeaderboard = async () => {
+    const q = query(collection(db, 'snakeScores'), orderBy('score', 'desc'), limit(10));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => doc.data());
 };
 
-const saveScore = (nickname, score) => {
-    const entries = loadLeaderboard();
-    const updated = [...entries, { nickname, score, date: new Date().toLocaleDateString() }]
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 10);
-    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(updated));
-    return updated;
+const saveScore = async (nickname, score) => {
+    await addDoc(collection(db, 'snakeScores'), {
+        nickname,
+        score,
+        date: new Date().toLocaleDateString()
+    });
+    return fetchLeaderboard();
 };
 
 export const Contacts = () => {
@@ -39,8 +36,12 @@ export const Contacts = () => {
     // Nickname + leaderboard
     const [nickname, setNickname] = useState('');
     const [nicknameConfirmed, setNicknameConfirmed] = useState(false);
-    const [leaderboard, setLeaderboard] = useState(loadLeaderboard);
+    const [leaderboard, setLeaderboard] = useState([]);
     const currentScoreRef = useRef(0);
+
+    useEffect(() => {
+        fetchLeaderboard().then(setLeaderboard);
+    }, []);
 
     const onScoreChange = (newScore) => {
         setScore(newScore);
@@ -52,7 +53,7 @@ export const Contacts = () => {
 
     const onGameOver = () => {
         if (nicknameConfirmed && currentScoreRef.current > 0) {
-            setLeaderboard(saveScore(nickname, currentScoreRef.current));
+            saveScore(nickname, currentScoreRef.current).then(setLeaderboard);
         }
         setGameKey(prevKey => prevKey + 1);
     };
