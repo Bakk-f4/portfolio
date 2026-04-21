@@ -103,7 +103,7 @@ export const Contacts = () => {
                 </div>
             </Row>
             <Row id='presentation'>
-                <Col xs={12} md={6}>
+                <Col xs={12} md>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
@@ -157,7 +157,7 @@ export const Contacts = () => {
                         </table>
                     </div>
                 </Col>
-                <Col id='box-image' xs={12} md={6}>
+                <Col id='box-image' xs={12} md>
                     {!nicknameConfirmed ? (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '1em' }}>
                             <h5 style={{ color: '#f2f2f2' }}>enter nickname to play</h5>
