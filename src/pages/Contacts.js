@@ -4,16 +4,19 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useState, useRef, useEffect } from 'react';
 import { Snake } from 'react-snake-lib';
 import { db } from '../firebase';
-import { collection, addDoc, query, orderBy, limit, getDocs } from 'firebase/firestore';
+import { ref, push, get, query, orderByChild, limitToLast } from 'firebase/database';
 
 const fetchLeaderboard = async () => {
-    const q = query(collection(db, 'snakeScores'), orderBy('score', 'desc'), limit(10));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => doc.data());
+    const q = query(ref(db, 'snakeScores'), orderByChild('score'), limitToLast(10));
+    const snapshot = await get(q);
+    if (!snapshot.exists()) return [];
+    const entries = [];
+    snapshot.forEach(child => entries.push(child.val()));
+    return entries.sort((a, b) => b.score - a.score);
 };
 
 const saveScore = async (nickname, score) => {
-    await addDoc(collection(db, 'snakeScores'), {
+    await push(ref(db, 'snakeScores'), {
         nickname,
         score,
         date: new Date().toLocaleDateString()
@@ -53,7 +56,9 @@ export const Contacts = () => {
 
     const onGameOver = () => {
         if (nicknameConfirmed && currentScoreRef.current > 0) {
-            saveScore(nickname, currentScoreRef.current).then(setLeaderboard);
+            saveScore(nickname, currentScoreRef.current)
+                .then(setLeaderboard)
+                .catch(err => console.error('Score save failed:', err));
         }
         setGameKey(prevKey => prevKey + 1);
     };
