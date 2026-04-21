@@ -33,7 +33,7 @@ const Timeline = ({ items }) => {
             anchor="bottom"
             open={!!selected}
             onClose={() => setSelectedId(null)}
-            PaperProps={{ style: { borderRadius: '12px 12px 0 0' } }}
+            PaperProps={{ style: { borderRadius: '12px 12px 0 0', backgroundColor: '#1a1d21', color: '#f2f2f2' } }}
           >
             <div className="drawer-content">
               <AnimatePresence>
