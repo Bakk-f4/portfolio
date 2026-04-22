@@ -1,3 +1,6 @@
+/// STYLE ///
+import '../my-css/contacts.css';
+
 /// COMPONENTS ///
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
@@ -123,8 +126,8 @@ export const Contacts = () => {
                     <h1>contact me</h1>
                 </div>
             </Row>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
-                <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div className="contacts-layout">
+                <div className="contacts-form">
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
@@ -141,7 +144,7 @@ export const Contacts = () => {
                             <Form.Control
                                 as="textarea"
                                 rows={4}
-                                placeholder="insert your max score"
+                                placeholder="insert your message"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 required
@@ -166,36 +169,36 @@ export const Contacts = () => {
                             </div>
                         )}
                     </Form>
-
-                    <div className="mt-4">
-                        <h5 style={{ color: '#f2f2f2', marginBottom: '0.75em' }}>🏆 leaderboard</h5>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-                            <thead>
-                                <tr style={{ borderBottom: '1px solid #444', color: '#aaa' }}>
-                                    <th style={{ padding: '4px 8px', textAlign: 'left' }}>#</th>
-                                    <th style={{ padding: '4px 8px', textAlign: 'left' }}>nickname</th>
-                                    <th style={{ padding: '4px 8px', textAlign: 'right' }}>score</th>
-                                    <th style={{ padding: '4px 8px', textAlign: 'right' }}>date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {leaderboard.length === 0 ? (
-                                    <tr>
-                                        <td colSpan={4} style={{ padding: '8px', textAlign: 'center', color: '#555' }}>no scores yet</td>
-                                    </tr>
-                                ) : leaderboard.map((entry, idx) => (
-                                    <tr key={idx} style={{ borderBottom: '1px solid #333', color: idx === 0 ? '#4ade80' : '#ccc' }}>
-                                        <td style={{ padding: '4px 8px' }}>{idx + 1}</td>
-                                        <td style={{ padding: '4px 8px' }}>{entry.nickname}</td>
-                                        <td style={{ padding: '4px 8px', textAlign: 'right', fontWeight: 'bold' }}>{entry.score}</td>
-                                        <td style={{ padding: '4px 8px', textAlign: 'right', color: '#888' }}>{entry.date}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
-                <div id='box-image' style={{ flex: '1 1 280px', minWidth: 0 }}>
+
+                <div className="contacts-leaderboard">
+                    <h5 style={{ color: '#f2f2f2', marginBottom: '0.75em' }}>🏆 leaderboard</h5>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                        <thead>
+                            <tr style={{ borderBottom: '1px solid #444', color: '#aaa' }}>
+                                <th style={{ padding: '4px 8px', textAlign: 'left' }}>#</th>
+                                <th style={{ padding: '4px 8px', textAlign: 'left' }}>nickname</th>
+                                <th style={{ padding: '4px 8px', textAlign: 'right' }}>score</th>
+                                <th style={{ padding: '4px 8px', textAlign: 'right' }}>date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {leaderboard.length === 0 ? (
+                                <tr>
+                                    <td colSpan={4} style={{ padding: '8px', textAlign: 'center', color: '#555' }}>no scores yet</td>
+                                </tr>
+                            ) : leaderboard.map((entry, idx) => (
+                                <tr key={idx} style={{ borderBottom: '1px solid #333', color: idx === 0 ? '#4ade80' : '#ccc' }}>
+                                    <td style={{ padding: '4px 8px' }}>{idx + 1}</td>
+                                    <td style={{ padding: '4px 8px' }}>{entry.nickname}</td>
+                                    <td style={{ padding: '4px 8px', textAlign: 'right', fontWeight: 'bold' }}>{entry.score}</td>
+                                    <td style={{ padding: '4px 8px', textAlign: 'right', color: '#888' }}>{entry.date}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="contacts-snake" id="box-image">
                     {!nicknameConfirmed ? (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '2em', gap: '1em' }}>
                             <h5 style={{ color: '#f2f2f2' }}>enter nickname to play</h5>

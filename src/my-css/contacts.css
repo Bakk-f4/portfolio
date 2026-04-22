@@ -1,0 +1,27 @@
+/* ── Desktop grid layout ── */
+
+.contacts-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "form   snake"
+        "leader snake";
+    gap: 1.5em 2em;
+    align-items: start;
+}
+
+.contacts-form       { grid-area: form; }
+.contacts-leaderboard { grid-area: leader; }
+.contacts-snake      { grid-area: snake; }
+
+/* ── Mobile ── */
+
+@media (max-width: 767px) {
+    .contacts-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "form"
+            "leader"
+            "snake";
+    }
+}
