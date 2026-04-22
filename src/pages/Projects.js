@@ -7,10 +7,12 @@ import '../my-css/projects.css';
 
 /// COMPONENTS ///
 import RowCardComponent from '../components/RowCardComponent';
+import { CodeSnippetPopup } from '../components/CodeSnippetPopup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 const octokit = new Octokit();
 
@@ -31,6 +33,11 @@ const iconsLinks = {
 
 export const Projects = () => {
     const [repos, setRepos] = useState([]);
+    const [activeSnippet, setActiveSnippet] = useState(null);
+
+    const handleIconClick = (icon) => {
+        setActiveSnippet(prev => prev === icon ? null : icon);
+    };
 
     useEffect(() => {
         octokit.request('GET /users/Bakk-f4/repos', {
@@ -81,7 +88,11 @@ export const Projects = () => {
                     <Row xs={4} md={3} className="gy-5 icons-container">
                         {Object.keys(iconsLinks).map((icon, idx) => (
                             <Col key={idx} className="d-flex justify-content-center mb-4 icon-box">
-                                <a href={iconsLinks[icon]} target="_blank" rel="noopener noreferrer" className="icon-link">
+                                <button
+                                    type="button"
+                                    className={`icon-link icon-btn${activeSnippet === icon ? ' icon-btn--active' : ''}`}
+                                    onClick={() => handleIconClick(icon)}
+                                >
                                     <img
                                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon}/${icon}-original.svg`}
                                         alt={icon}
@@ -89,12 +100,21 @@ export const Projects = () => {
                                         height="50"
                                     />
                                     <span className="tooltip">{icon}</span>
-                                </a>
+                                </button>
                             </Col>
                         ))}
                     </Row>
                 </Col>
             </Row>
+            <AnimatePresence>
+                {activeSnippet && (
+                    <CodeSnippetPopup
+                        key={activeSnippet}
+                        lang={activeSnippet}
+                        onClose={() => setActiveSnippet(null)}
+                    />
+                )}
+            </AnimatePresence>
         </Container>
     );
 }
