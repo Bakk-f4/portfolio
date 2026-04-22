@@ -26,18 +26,22 @@
 /* ── Timeline split layout ── */
 
 .timeline-container {
-  min-height: 60vh;
+  height: 60vh;
+  overflow: hidden;
 }
 
 .timeline-split {
   display: flex;
   align-items: flex-start;
   gap: 0;
+  height: 100%;
 }
 
 .timeline-list-col {
   flex-shrink: 0;
   padding-right: 1.5em;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .timeline-list-col.has-selection {
@@ -108,6 +112,8 @@
   flex: 1;
   padding: 0 0 2em 2em;
   min-width: 0;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .detail-role {
