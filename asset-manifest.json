@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.c0668d4c.css",
-    "main.js": "/portfolio/static/js/main.3becb822.js",
+    "main.css": "/portfolio/static/css/main.12b5314d.css",
+    "main.js": "/portfolio/static/js/main.c60aff9a.js",
     "static/js/787.7da95b79.chunk.js": "/portfolio/static/js/787.7da95b79.chunk.js",
     "static/media/bakk-logo.png": "/portfolio/static/media/bakk-logo.307c873f8925b657c9ec.png",
     "static/media/IBMPlexMono-Bold.ttf": "/portfolio/static/media/IBMPlexMono-Bold.270fc7685a99d1197e53.ttf",
     "static/media/me-black-and-white.jpg": "/portfolio/static/media/me-black-and-white.1180ae90c5b6719bf7ac.jpg",
     "static/media/matrixFont.ttf": "/portfolio/static/media/matrixFont.77b36b5eb15b0d99bd9a.ttf",
     "index.html": "/portfolio/index.html",
-    "main.c0668d4c.css.map": "/portfolio/static/css/main.c0668d4c.css.map",
-    "main.3becb822.js.map": "/portfolio/static/js/main.3becb822.js.map",
+    "main.12b5314d.css.map": "/portfolio/static/css/main.12b5314d.css.map",
+    "main.c60aff9a.js.map": "/portfolio/static/js/main.c60aff9a.js.map",
     "787.7da95b79.chunk.js.map": "/portfolio/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0668d4c.css",
-    "static/js/main.3becb822.js"
+    "static/css/main.12b5314d.css",
+    "static/js/main.c60aff9a.js"
   ]
 }
