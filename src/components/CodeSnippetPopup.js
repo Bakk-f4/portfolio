@@ -176,20 +176,22 @@ CMD ["node", "index.js"]`,
     },
     dotnetcore: {
         label: '.NET', color: '#512BD4', ext: 'cs',
-        code: `var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+        code: `var app = WebApplication
+    .CreateBuilder(args)
+    .Build();
 
-app.MapGet("/scores/{id}", async (int id, AppDb db) =>
+app.MapGet("/scores/{id}",
+  async (int id, AppDb db) =>
     await db.Scores.FindAsync(id)
-        is Score s
-            ? Results.Ok(s)
-            : Results.NotFound());
+      is Score s
+        ? Results.Ok(s)
+        : Results.NotFound());
 
-app.MapGet("/leaderboard", async (AppDb db) =>
-    await db.Scores
-        .OrderByDescending(s => s.Value)
-        .Take(10)
-        .ToListAsync());
+app.MapGet("/leaderboard",
+  async (AppDb db) => await db.Scores
+    .OrderByDescending(s => s.Value)
+    .Take(10)
+    .ToListAsync());
 
 app.Run();`,
     },

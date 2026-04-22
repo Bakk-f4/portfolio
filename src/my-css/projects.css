@@ -162,7 +162,8 @@
     overflow-y: auto;
     tab-size: 2;
     background: transparent;
-    white-space: pre;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .snippet-cursor {
