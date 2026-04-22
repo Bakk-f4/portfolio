@@ -29,6 +29,7 @@ const iconsLinks = {
     "docker": "https://www.docker.com/",
     "bootstrap": "https://getbootstrap.com/",
     "unity": "https://unity.com/",
+    "dotnetcore": "https://dotnet.microsoft.com/",
 };
 
 export const Projects = () => {

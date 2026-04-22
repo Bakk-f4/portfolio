@@ -174,6 +174,25 @@ CMD ["node", "index.js"]`,
   </div>
 </div>`,
     },
+    dotnetcore: {
+        label: '.NET', color: '#512BD4', ext: 'cs',
+        code: `var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/scores/{id}", async (int id, AppDb db) =>
+    await db.Scores.FindAsync(id)
+        is Score s
+            ? Results.Ok(s)
+            : Results.NotFound());
+
+app.MapGet("/leaderboard", async (AppDb db) =>
+    await db.Scores
+        .OrderByDescending(s => s.Value)
+        .Take(10)
+        .ToListAsync());
+
+app.Run();`,
+    },
     unity: {
         label: 'Unity', color: '#BBBBBB', ext: 'cs',
         code: `public class PlayerController : MonoBehaviour {
