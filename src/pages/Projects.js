@@ -34,9 +34,20 @@ const iconsLinks = {
 export const Projects = () => {
     const [repos, setRepos] = useState([]);
     const [activeSnippet, setActiveSnippet] = useState(null);
+    const [anchorPos, setAnchorPos] = useState(null);
 
-    const handleIconClick = (icon) => {
-        setActiveSnippet(prev => prev === icon ? null : icon);
+    const handleIconClick = (icon, e) => {
+        if (activeSnippet === icon) {
+            setActiveSnippet(null);
+            setAnchorPos(null);
+            return;
+        }
+        const rect = e.currentTarget.getBoundingClientRect();
+        setAnchorPos({
+            top: rect.bottom + 10,
+            left: Math.min(rect.left + 10, window.innerWidth - 360),
+        });
+        setActiveSnippet(icon);
     };
 
     useEffect(() => {
@@ -91,7 +102,7 @@ export const Projects = () => {
                                 <button
                                     type="button"
                                     className={`icon-link icon-btn${activeSnippet === icon ? ' icon-btn--active' : ''}`}
-                                    onClick={() => handleIconClick(icon)}
+                                    onClick={(e) => handleIconClick(icon, e)}
                                 >
                                     <img
                                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon}/${icon}-original.svg`}
@@ -111,7 +122,8 @@ export const Projects = () => {
                     <CodeSnippetPopup
                         key={activeSnippet}
                         lang={activeSnippet}
-                        onClose={() => setActiveSnippet(null)}
+                        anchorPos={anchorPos}
+                        onClose={() => { setActiveSnippet(null); setAnchorPos(null); }}
                     />
                 )}
             </AnimatePresence>

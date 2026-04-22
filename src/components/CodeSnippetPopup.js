@@ -193,7 +193,7 @@ CMD ["node", "index.js"]`,
     },
 };
 
-export const CodeSnippetPopup = ({ lang, onClose }) => {
+export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
     const snippet = SNIPPETS[lang];
     const [displayed, setDisplayed] = useState('');
     const [done, setDone] = useState(false);
@@ -222,7 +222,10 @@ export const CodeSnippetPopup = ({ lang, onClose }) => {
     return (
         <>
             <div className="snippet-backdrop" onClick={onClose} />
-            <div className="snippet-positioner">
+            <div
+                className="snippet-positioner"
+                style={anchorPos ? { top: anchorPos.top, left: anchorPos.left, right: 'auto', bottom: 'auto', alignItems: 'flex-start' } : {}}
+            >
                 <motion.div
                     className="snippet-terminal"
                     style={{
