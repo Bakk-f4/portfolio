@@ -4,8 +4,6 @@ import '../my-css/fonts/fonts.css';
 
 /// COMPONENTS ///
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
 const BoxComponent = () => {
@@ -25,35 +23,30 @@ const BoxComponent = () => {
 
     return (
         <Container style={boxStyle}>
-            <Row style={{ position: ‘relative’ }}>
-                <Col xs={12} md>
-                    <Row>
-                        <div id=’title-presentation’>
-                            <h1>hi.</h1>
-                            <h1>i’m</h1>
-                            <h1>Ion</h1>
-                        </div>
-                    </Row>
-                    <Row id=’row-presentation’>
-                        <div id=’presentation’>
-                            <p>
-                                <br />
-                                I’m a computer science student at Unige.<br /><br />
-                                Passionate about the magic behind how things work.<br /><br />
-                                Currently in the process of graduating,<br />
-                                I try to capture every facet<br />
-                                of the vast computer science landscape.<br />
-                            </p>
-                        </div>
-                    </Row>
-                </Col>
-                <Col xs={12} md id=’box-image’>
-                    <Image src={require(‘../img/me-black-and-white.jpg’)} rounded id=’homepage-image’ />
-                </Col>
-            </Row>
+            <div className="home-layout">
+                <div className="home-title" id="title-presentation">
+                    <h1>hi.</h1>
+                    <h1>i&apos;m</h1>
+                    <h1>Ion</h1>
+                </div>
+                <div className="home-image" id="box-image">
+                    <Image src={require('../img/me-black-and-white.jpg')} rounded id="homepage-image" />
+                </div>
+                <div className="home-desc" id="row-presentation">
+                    <div id="presentation">
+                        <p>
+                            <br />
+                            I&apos;m a computer science student at Unige.<br /><br />
+                            Passionate about the magic behind how things work.<br /><br />
+                            Currently in the process of graduating,<br />
+                            I try to capture every facet<br />
+                            of the vast computer science landscape.<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
         </Container>
     );
-
 };
 
 export default BoxComponent;

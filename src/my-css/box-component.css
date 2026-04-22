@@ -1,3 +1,21 @@
+/* ── Desktop grid layout ── */
+
+.home-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title image"
+        "desc  image";
+    gap: 0 2em;
+    align-items: start;
+}
+
+.home-title { grid-area: title; }
+.home-image { grid-area: image; }
+.home-desc  { grid-area: desc; }
+
+/* ── Typography ── */
+
 #title-presentation h1 {
     font-family: 'IBM Plex Mono';
     line-height: 1.05em;
@@ -15,26 +33,35 @@
     color: #F2F2F2;
 }
 
+/* ── Image ── */
+
 #box-image {
     height: auto;
     opacity: 0.7;
-    width: 100%;
 }
 
 #homepage-image {
-    float: right;
-    width: 90%;
+    width: 100%;
 }
 
+/* ── Mobile ── */
+
 @media (max-width: 767px) {
+    .home-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "image"
+            "desc";
+    }
+
+    #title-presentation h1 {
+        font-size: 60px;
+    }
+
     #box-image {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 70%;
-        height: auto;
-        opacity: 0.25;
-        z-index: 0;
+        opacity: 0.85;
+        margin: 0.75em 0;
     }
 
     #homepage-image {
@@ -42,31 +69,15 @@
         float: none;
     }
 
-    #title-presentation h1 {
-        font-size: 60px;
-        line-height: 1.1em;
-        position: relative;
-        z-index: 1;
-    }
-
     #presentation {
         font-size: 15px;
         line-height: 1.8em;
-        position: relative;
-        z-index: 1;
-        max-width: 100%;
-    }
-
-    #row-presentation {
-        width: 100%;
     }
 }
 
-@media (min-width: 768px) and (max-width: 980px) {
-    #row-presentation {
-        width: 100%;
-    }
+/* ── Tablet ── */
 
+@media (min-width: 768px) and (max-width: 980px) {
     #presentation {
         font-size: 16px;
     }
