@@ -1,15 +1,16 @@
 #title-presentation h1 {
     font-family: 'IBM Plex Mono';
-    line-height: '2em';
+    line-height: 1.05em;
     font-size: 85px;
-    font-weight: 'normal';
+    font-weight: normal;
     margin-left: 0;
+    margin-bottom: 0;
 }
 
 #presentation {
     font-family: 'IBM Plex Mono';
     font-size: 22px;
-    font-weight: 'normal';
+    font-weight: normal;
     line-height: 1.65em;
     color: #F2F2F2;
 }
@@ -28,32 +29,45 @@
 @media (max-width: 767px) {
     #box-image {
         position: absolute;
+        top: 0;
+        right: 0;
+        width: 70%;
         height: auto;
-        opacity: 0.3;
-        z-index: -1;
-        transition: all 3s ease-out;
+        opacity: 0.25;
+        z-index: 0;
+    }
+
+    #homepage-image {
+        width: 100%;
+        float: none;
     }
 
     #title-presentation h1 {
-        font-family: 'IBM Plex Mono';
-        line-height: '2em';
-        font-size: 85px;
-        font-weight: 'normal';
+        font-size: 60px;
+        line-height: 1.1em;
+        position: relative;
+        z-index: 1;
+    }
+
+    #presentation {
+        font-size: 15px;
+        line-height: 1.8em;
+        position: relative;
+        z-index: 1;
+        max-width: 100%;
     }
 
     #row-presentation {
-        width: 110%;
+        width: 100%;
     }
-
 }
 
-
 @media (min-width: 768px) and (max-width: 980px) {
-
-    /* Stili per il range di px da 768 a 980 */
     #row-presentation {
-        width: 230%;
-        transition: all 0.5s ease-in-out;
+        width: 100%;
+    }
 
+    #presentation {
+        font-size: 16px;
     }
 }

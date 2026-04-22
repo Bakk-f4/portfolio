@@ -25,17 +25,17 @@ const BoxComponent = () => {
 
     return (
         <Container style={boxStyle}>
-            <Row>
-                <Col>
-                    <Row >
-                        <div id='title-presentation'>
+            <Row style={{ position: ‘relative’ }}>
+                <Col xs={12} md>
+                    <Row>
+                        <div id=’title-presentation’>
                             <h1>hi.</h1>
                             <h1>i’m</h1>
                             <h1>Ion</h1>
                         </div>
                     </Row>
-                    <Row id='row-presentation'>
-                        <div id='presentation'>
+                    <Row id=’row-presentation’>
+                        <div id=’presentation’>
                             <p>
                                 <br />
                                 I’m a computer science student at Unige.<br /><br />
@@ -47,8 +47,8 @@ const BoxComponent = () => {
                         </div>
                     </Row>
                 </Col>
-                <Col id='box-image'>
-                    <Image src={require('../img/me-black-and-white.jpg')} rounded id='homepage-image' />
+                <Col xs={12} md id=’box-image’>
+                    <Image src={require(‘../img/me-black-and-white.jpg’)} rounded id=’homepage-image’ />
                 </Col>
             </Row>
         </Container>
