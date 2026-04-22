@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useDragControls } from 'framer-motion';
 
 const SNIPPETS = {
     cplusplus: {
@@ -219,6 +219,7 @@ export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
     const [displayed, setDisplayed] = useState('');
     const [done, setDone] = useState(false);
     const intervalRef = useRef(null);
+    const dragControls = useDragControls();
 
     useEffect(() => {
         setDisplayed('');
@@ -256,12 +257,21 @@ export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
                         borderColor: snippet.color + '55',
                         boxShadow: `0 0 40px ${snippet.color}14, 0 20px 60px rgba(0,0,0,0.95)`,
                     }}
+                    drag
+                    dragControls={dragControls}
+                    dragListener={false}
+                    dragMomentum={false}
+                    dragElastic={0}
                     initial={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}
                     transition={{ type: 'spring', stiffness: 340, damping: 28 }}
                 >
-                    <div className="snippet-header" style={{ borderBottomColor: snippet.color + '33' }}>
+                    <div
+                        className="snippet-header"
+                        style={{ borderBottomColor: snippet.color + '33', cursor: 'grab' }}
+                        onPointerDown={(e) => dragControls.start(e)}
+                    >
                         <span className="snippet-dot" style={{ backgroundColor: snippet.color }} />
                         <span className="snippet-filename">
                             {snippet.label.toLowerCase()}.{snippet.ext}
