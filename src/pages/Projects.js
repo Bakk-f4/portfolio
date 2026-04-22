@@ -44,14 +44,13 @@ export const Projects = () => {
         }
         const rect = e.currentTarget.getBoundingClientRect();
         const POPUP_H = 380;
+        const left = Math.min(rect.left + 10, window.innerWidth - 360);
         const spaceBelow = window.innerHeight - rect.bottom;
-        const top = spaceBelow >= POPUP_H
-            ? rect.bottom + 10
-            : Math.max(10, rect.top - POPUP_H - 10);
-        setAnchorPos({
-            top,
-            left: Math.min(rect.left + 10, window.innerWidth - 360),
-        });
+        if (spaceBelow >= POPUP_H) {
+            setAnchorPos({ top: rect.bottom + 10, left, flip: false });
+        } else {
+            setAnchorPos({ bottom: window.innerHeight - rect.top + 10, left, flip: true });
+        }
         setActiveSnippet(icon);
     };
 

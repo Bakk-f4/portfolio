@@ -224,7 +224,10 @@ export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
             <div className="snippet-backdrop" onClick={onClose} />
             <div
                 className="snippet-positioner"
-                style={anchorPos ? { top: anchorPos.top, left: anchorPos.left, right: 'auto', bottom: 'auto', alignItems: 'flex-start' } : {}}
+                style={anchorPos ? (anchorPos.flip
+                    ? { bottom: anchorPos.bottom, left: anchorPos.left }
+                    : { top: anchorPos.top, left: anchorPos.left }
+                ) : {}}
             >
                 <motion.div
                     className="snippet-terminal"
@@ -232,9 +235,9 @@ export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
                         borderColor: snippet.color + '55',
                         boxShadow: `0 0 40px ${snippet.color}14, 0 20px 60px rgba(0,0,0,0.95)`,
                     }}
-                    initial={{ opacity: 0, x: 60, scale: 0.97 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: 60, scale: 0.97 }}
+                    initial={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}
                     transition={{ type: 'spring', stiffness: 340, damping: 28 }}
                 >
                     <div className="snippet-header" style={{ borderBottomColor: snippet.color + '33' }}>
