@@ -29,6 +29,7 @@ export const Contacts = () => {
     // Contact variables
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [formStatus, setFormStatus] = useState(null); // null | 'sending' | 'success' | 'error'
 
     // Snake minigame variables
     const [gameKey, setGameKey] = useState(0);
@@ -88,11 +89,31 @@ export const Contacts = () => {
         justifyContent: 'center',
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Email:', email);
-        console.log('Message:', message);
-        // Insert sending mail logic
+        setFormStatus('sending');
+        try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    access_key: process.env.REACT_APP_WEB3FORMS_KEY,
+                    email,
+                    message,
+                    botcheck: '',
+                }),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setFormStatus('success');
+                setEmail('');
+                setMessage('');
+            } else {
+                setFormStatus('error');
+            }
+        } catch {
+            setFormStatus('error');
+        }
     };
 
     return (
@@ -126,7 +147,24 @@ export const Contacts = () => {
                                 required
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3">Send</Button>
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className="mt-3"
+                            disabled={formStatus === 'sending'}
+                        >
+                            {formStatus === 'sending' ? 'Sending…' : 'Send'}
+                        </Button>
+                        {formStatus === 'success' && (
+                            <div style={{ marginTop: '0.75em', color: '#4ade80', fontSize: '14px' }}>
+                                Message sent!
+                            </div>
+                        )}
+                        {formStatus === 'error' && (
+                            <div style={{ marginTop: '0.75em', color: '#f87171', fontSize: '14px' }}>
+                                Failed to send. Try again.
+                            </div>
+                        )}
                     </Form>
 
                     <div className="mt-4">
