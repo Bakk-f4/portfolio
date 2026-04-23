@@ -85,7 +85,7 @@ export const Projects = () => {
                         </div>
                     </Row>
                     <Row>
-                        <Row xs={1} md={3} className="g-4">
+                        <Row xs={2} md={3} className="g-4">
                             {repos.map((repo, idx) => (
                                 <Col key={idx}>
                                     <RowCardComponent

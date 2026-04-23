@@ -262,6 +262,8 @@ export const CodeSnippetPopup = ({ lang, onClose, anchorPos }) => {
                     dragListener={false}
                     dragMomentum={false}
                     dragElastic={0}
+                    onDragStart={() => { document.body.style.overflow = 'hidden'; }}
+                    onDragEnd={() => { document.body.style.overflow = ''; }}
                     initial={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: anchorPos?.flip ? 12 : -12, scale: 0.96 }}

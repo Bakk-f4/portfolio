@@ -2,6 +2,13 @@
     margin: 0.5em;
 }
 
+@media (max-width: 767px) {
+    .card-owner,
+    .card-date {
+        display: none;
+    }
+}
+
 #card-description-repo-name {
     font-size: 0.8em;
 }
@@ -116,6 +123,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    touch-action: none;
 }
 
 .snippet-dot {
@@ -164,6 +172,14 @@
     background: transparent;
     white-space: pre-wrap;
     word-break: break-word;
+
+    /* Nasconde scrollbar */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE e Edge vecchio */
+}
+
+.snippet-code::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Edge */
 }
 
 .snippet-cursor {

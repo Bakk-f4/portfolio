@@ -4,7 +4,7 @@ import '../my-css/contacts.css';
 /// COMPONENTS ///
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Snake } from 'react-snake-lib';
 import { db } from '../firebase';
 import { ref, push, get, query, orderByChild, limitToLast } from 'firebase/database';
@@ -75,6 +75,31 @@ export const Contacts = () => {
 
     const confirmNickname = () => {
         if (nickname.trim()) setNicknameConfirmed(true);
+    };
+
+    const sendKey = useCallback((key) => {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+    }, []);
+
+    const touchStart = useRef(null);
+
+    const onTouchStart = (e) => {
+        const t = e.touches[0];
+        touchStart.current = { x: t.clientX, y: t.clientY };
+    };
+
+    const onTouchEnd = (e) => {
+        if (!touchStart.current) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStart.current.x;
+        const dy = t.clientY - touchStart.current.y;
+        touchStart.current = null;
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+        if (Math.abs(dx) > Math.abs(dy)) {
+            sendKey(dx > 0 ? 'ArrowRight' : 'ArrowLeft');
+        } else {
+            sendKey(dy > 0 ? 'ArrowDown' : 'ArrowUp');
+        }
     };
 
 
@@ -236,40 +261,42 @@ export const Contacts = () => {
                                 <span style={{ fontSize: '20px', fontWeight: 'bold' }}>score: {score}</span>
                                 <span style={{ fontSize: '20px', fontWeight: 'bold' }}>max: {maxScore}</span>
                             </div>
-                            <Snake
-                                key={gameKey}
-                                onScoreChange={onScoreChange}
-                                onGameOver={onGameOver}
-                                onGameStart={onGameStart}
-                                width="90%"
-                                bgColor="silver"
-                                innerBorderColor="#b1b0b0"
-                                snakeSpeed={90}
-                                borderColor="black"
-                                snakeColor="#3e3e3e"
-                                snakeHeadColor="#1a1a1a"
-                                appleColor="tomato"
-                                borderRadius={5}
-                                snakeHeadRadius={1}
-                                borderWidth={0}
-                                shakeBoard={true}
-                                boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-                                size={16}
-                                startGameText="Start Game"
-                                startButtonStyle={{
-                                    color: "white",
-                                    padding: "6px 20px",
-                                    backgroundColor: "#1a1a1a",
-                                    borderRadius: "10px",
-                                    fontSize: "17px",
-                                    fontWeight: "600",
-                                    cursor: "pointer"
-                                }}
-                                startButtonHoverStyle={{
-                                    backgroundColor: "#4f4d4d"
-                                }}
-                                noWall={noWall}
-                            />
+                            <div className="snake-square-wrapper" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+                                <Snake
+                                    key={gameKey}
+                                    onScoreChange={onScoreChange}
+                                    onGameOver={onGameOver}
+                                    onGameStart={onGameStart}
+                                    width="90%"
+                                    bgColor="silver"
+                                    innerBorderColor="#b1b0b0"
+                                    snakeSpeed={90}
+                                    borderColor="black"
+                                    snakeColor="#3e3e3e"
+                                    snakeHeadColor="#1a1a1a"
+                                    appleColor="tomato"
+                                    borderRadius={5}
+                                    snakeHeadRadius={1}
+                                    borderWidth={0}
+                                    shakeBoard={true}
+                                    boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                                    size={16}
+                                    startGameText="Start Game"
+                                    startButtonStyle={{
+                                        color: "white",
+                                        padding: "6px 20px",
+                                        backgroundColor: "#1a1a1a",
+                                        borderRadius: "10px",
+                                        fontSize: "17px",
+                                        fontWeight: "600",
+                                        cursor: "pointer"
+                                    }}
+                                    startButtonHoverStyle={{
+                                        backgroundColor: "#4f4d4d"
+                                    }}
+                                    noWall={noWall}
+                                />
+                            </div>
                             <div style={{ fontSize: '20px', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center' }}>
                                 walls:
                                 <Form.Check
@@ -279,6 +306,15 @@ export const Contacts = () => {
                                     onChange={() => setNoWall(prevState => !prevState)}
                                     style={{ marginLeft: '10px', marginTop: '10px' }}
                                 />
+                            </div>
+                            <div className="snake-dpad">
+                                <button className="dpad-btn dpad-up" onTouchStart={(e) => { e.preventDefault(); sendKey('ArrowUp'); }}>▲</button>
+                                <div className="dpad-middle-row">
+                                    <button className="dpad-btn dpad-left" onTouchStart={(e) => { e.preventDefault(); sendKey('ArrowLeft'); }}>◀</button>
+                                    <div className="dpad-center" />
+                                    <button className="dpad-btn dpad-right" onTouchStart={(e) => { e.preventDefault(); sendKey('ArrowRight'); }}>▶</button>
+                                </div>
+                                <button className="dpad-btn dpad-down" onTouchStart={(e) => { e.preventDefault(); sendKey('ArrowDown'); }}>▼</button>
                             </div>
                         </div>
                     )}

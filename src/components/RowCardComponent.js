@@ -14,20 +14,22 @@ export default function InteractiveCard({ repoOwner, repoName, lastModification,
             variant="solid"
             orientation="horizontal"
             sx={{
-                width: 150,
-                height: 150,
+                width: '100%',
+                aspectRatio: '1 / 1',
+                height: 'auto',
                 maxWidth: 345,
+                overflow: 'hidden',
                 '&:hover': { boxShadow: 'md', borderColor: 'neutral.outlinedHoverBorder' },
             }}
         >
-            <CardContent>
-                <Typography level="title-lg" id="card-description" >
+            <CardContent sx={{ overflow: 'hidden' }}>
+                <Typography level="title-lg" id="card-description" className="card-owner" noWrap>
                     {repoOwner}
                 </Typography>
-                <Typography level="title-lg" id="card-description-repo-name">
+                <Typography level="title-lg" id="card-description-repo-name" noWrap>
                     {repoName.slice(0, 15)}
                 </Typography>
-                <Typography level="body-sm" aria-describedby="card-description" mb={1}>
+                <Typography level="body-sm" aria-describedby="card-description" mb={1} sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Link
                         overlay
                         underline="none"
