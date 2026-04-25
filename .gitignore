@@ -26,3 +26,6 @@ yarn-error.log*
 
 # superpowers brainstorm files
 .superpowers/
+
+# docs
+docs/
